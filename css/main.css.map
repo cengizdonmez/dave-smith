@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "mappings": "AAAA,AAAA,EAAE,CAAA;EACA,KAAK,EAAE,GAAG;EACV,UAAU,EAAE,GAAG;CAChB",
+  "sources": [
+    "../scss/main.scss",
+    "../scss/_header.scss",
+    "../scss/_footer.scss",
+    "../scss/mixin.scss"
+  ],
+  "names": [],
+  "file": "main.css"
+}

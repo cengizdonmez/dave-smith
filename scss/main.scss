@@ -1,0 +1,407 @@
+$primary: #21314e;
+$secondary: #d03536;
+$dark: #2d2d2d;
+$gray: #575757;
+$font-family-lato: "Lato";
+$font-family-droid-serif: "Droid Serif";
+
+@import "./mixin";
+
+body {
+  font-family: $font-family-lato;
+  font-size: 0.875rem;
+}
+.container {
+  max-width: 1550px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  &.btn-primary {
+    background-color: $primary;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    i {
+      transition: all 0.2s ease-in-out;
+      transform: translateX(0px);
+    }
+    &:hover {
+      background-color: $secondary;
+      i {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+.nav-link {
+  color: $dark;
+  transition: 300ms;
+  &:hover {
+    color: black;
+  }
+}
+
+.gray-uppercase-title {
+  color: rgba($gray, 0.7);
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+/* figure hover effect */
+
+figure {
+  position: relative;
+  overflow: hidden;
+}
+figure::before {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  display: block;
+  content: "";
+  width: 50%;
+  height: 100%;
+  background: -webkit-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  -webkit-transform: skewX(-25deg);
+  transform: skewX(-25deg);
+}
+figure:hover::before {
+  -webkit-animation: shine 0.75s;
+  animation: shine 0.75s;
+}
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+/* swiper */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hero CountDown */
+.hero-countdown {
+  position: relative;
+  padding: 3rem 0;
+  @keyframes bulletAnimation {
+    0% {
+      box-shadow: #{getShadow()};
+    }
+    10% {
+      box-shadow: #{getShadow()};
+    }
+    20% {
+      box-shadow: #{getShadow()};
+    }
+    30% {
+      box-shadow: #{getShadow()};
+    }
+    40% {
+      box-shadow: #{getShadow()};
+    }
+    50% {
+      box-shadow: #{getShadow()};
+    }
+    60% {
+      box-shadow: #{getShadow()};
+    }
+    70% {
+      box-shadow: #{getShadow()};
+    }
+    80% {
+      box-shadow: #{getShadow()};
+    }
+    90% {
+      box-shadow: #{getShadow()};
+    }
+    100% {
+      box-shadow: #{getShadow()};
+    }
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5vw;
+    background: transparent;
+    height: 1.5vw;
+    border-radius: 50%;
+    animation: bulletAnimation 30s infinite alternate linear;
+    opacity: 0.9;
+    z-index: -1;
+  }
+  &::after {
+    left: inherit;
+    right: 20vw;
+    animation: bulletAnimation 35s infinite alternate linear;
+  }
+  .content {
+    text-align: center;
+    h1 {
+      font-size: 4.5rem;
+      font-weight: bold;
+      color: $primary;
+      margin-bottom: 2.5rem;
+      letter-spacing: -0.15rem;
+      @media (max-width: 768px) {
+        font-size: 3.1rem;
+      }
+    }
+    .countdown {
+      margin-bottom: 3rem;
+      h2 {
+        color: $secondary;
+        font-weight: lighter;
+        @media (max-width: 768px) {
+          font-size: 1.25rem;
+        }
+      }
+      .timer {
+        height: 64px;
+        font-size: 4rem;
+        color: $secondary;
+        font-weight: bold;
+        line-height: 1;
+        @media (max-width: 768px) {
+          font-size: 3rem;
+        }
+        span {
+          margin: 0 2rem;
+          @media (max-width: 992px) {
+            margin: 0 1rem;
+          }
+          @media (max-width: 768px) {
+            margin: 0 0.5rem;
+          }
+        }
+      }
+    }
+    .btn {
+      margin: 0 1rem;
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      max-width: 280px;
+      width: 100%;
+      margin-bottom: 0.5rem;
+      @media (max-width: 992px) {
+        display: block;
+        margin: 0.5rem auto;
+      }
+    }
+  }
+}
+
+/* Product Slider Section */
+.product-swiper-section,
+.gifts-category-swiper-section {
+  h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: $font-family-droid-serif;
+  }
+  .swiper-wrapper {
+    padding-top: 2.5rem;
+  }
+  .swiper-pagination {
+    bottom: initial;
+    top: 0;
+    .swiper-pagination-bullet {
+      background: $secondary;
+      &.swiper-pagination-bullet-active {
+        background: $primary;
+      }
+    }
+  }
+  .swiper-slide {
+    .card {
+      width: 100%;
+      border: 0;
+      img {
+        height: 390px;
+        border-radius: 0;
+        @media (max-width: 576px) {
+          height: 490px;
+        }
+      }
+      .card-body {
+        padding: 0.625rem 1rem;
+        .card-title {
+          font-size: 1.125rem;
+          font-weight: bold;
+          color: #000;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+  }
+}
+.product-swiper-section {
+  @media (min-width: 992px) {
+    .container {
+      padding: 0 8rem;
+    }
+  }
+
+  .card-body {
+    text-align: start;
+    .card-link {
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #000;
+    }
+  }
+}
+.gifts-category-swiper-section {
+  .swiper-slide {
+    .card {
+      img {
+        height: 580px;
+      }
+    }
+  }
+}
+
+@import "./header";
+@import "./footer";
+
+//ANIMATIONS
+
+.hero-countdown {
+  &.anim {
+    &::before,
+    &::after {
+      transition: 1.5s;
+      transform: scale(1.2);
+      opacity: 0;
+      transition-delay: 100ms;
+    }
+    h1 {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 500ms;
+      transition-delay: 250ms;
+    }
+
+    h2,
+    .timer {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 500ms;
+    }
+    h2 {
+      transition-delay: 500ms;
+    }
+    .timer {
+      transition-delay: 750ms;
+    }
+    .content {
+      .buton-group {
+        opacity: 0;
+        transition: 750ms;
+        transform: translateY(30px);
+        transition-delay: 750ms;
+      }
+    }
+
+    &.active {
+      &::before,
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+      h1 {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      h2,
+      .timer {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+
+      .content {
+        .buton-group {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+.anim {
+  &.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 500ms;
+    transition-delay: 250ms;
+  }
+  &.delay-1-3s {
+    transition-delay: 1.3s;
+  }
+  &.delay-1-6s {
+    transition-delay: 1.6s;
+  }
+  &.active {
+    &.fade-up {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

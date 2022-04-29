@@ -1,0 +1,21 @@
+$colors: "#4b8153", "#e76767", "#d55b2f", "#cf3535", "#d9b341", "#315dab",
+  "#e75b77";
+
+@function randomBoxShadow($min, $max, $color) {
+  $rand1: random();
+  $rand2: random();
+  $randomNum1: $min + floor($rand1 * (($max - $min) + 1));
+  $randomNum2: $min + floor($rand2 * (($max - $min) + 1));
+
+  @return $randomNum1 + "vw " + $randomNum2 + "vw " + $color;
+}
+
+@function getShadow() {
+  $shadow: randomBoxShadow(0, 20, nth($colors, random(length($colors))));
+  @for $i from 1 through 15 {
+    $shadow: $shadow +
+      ", " +
+      randomBoxShadow(0, 20, nth($colors, random(length($colors))));
+  }
+  @return $shadow;
+}
